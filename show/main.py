@@ -1869,17 +1869,17 @@ def firmwareinfo(device):
 
 
 # 
-# 'ssd_capcity' command ("show ssd_capcity /dev/xxx")
-# use this command to show SSD capcity info
+# 'ssd_capacity' command ("show ssd_capacity /dev/xxx")
+# use this command to show SSD capacity info
 #
 
 @ssd.command()
 @click.argument("device")
-def capcity(device):
-    """show ssd capcity"""
+def capacity(device):
+    """show ssd capacity"""
 
     checkin = 0
-    testname = "SSD Capcity Test"
+    testname = "SSD Capacity Test"
     command = "sudo smartctl -i " + device
     proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     output = proc.stdout.readlines()
@@ -1898,7 +1898,7 @@ def capcity(device):
                 checkin = 1
 
     if(checkin == 0):
-        click.echo("Can't get SSD Capcity")
+        click.echo("Can't get SSD Capacity")
 
     echo_empty_line()
 
@@ -2216,9 +2216,9 @@ def all(device):
 
     echo_empty_line()
 
-    #"""Show ssd capcity"""
+    #"""Show ssd capacity"""
     checkin = 0
-    testname = "SSD Capcity Test"
+    testname = "SSD Capacity Test"
 
     print_test_title(testname)
     for line in outputinfo:
@@ -2227,7 +2227,7 @@ def all(device):
             checkin = 1
 
     if(checkin == 0):
-        click.echo("Can't get SSD Capcity")
+        click.echo("Can't get SSD Capacity")
 
     echo_empty_line()
 
@@ -2377,7 +2377,7 @@ def help():
     click.echo("\nUsage: show [options] [device]")
     click.echo("========================= SHOW INFORMATION OPTIONS =========================\n")
     click.echo("{0:30s}{1:<40}".format("    ssd firmwareinfo /dev/xxx",	"show SSD firmware info"))
-    click.echo("{0:30s}{1:<40}".format("    ssd capcity /dev/xxx     ",	"show SSD capcity"))
+    click.echo("{0:30s}{1:<40}".format("    ssd capacity /dev/xxx     ",	"show SSD capacity"))
     click.echo("{0:30s}{1:<40}".format("    ssd sn /dev/xxx          ",	"show SSD serial number"))
     click.echo("{0:30s}{1:<40}".format("    ssd remaintime /dev/xxx  ",	"show SSD remaining time"))
     click.echo("{0:30s}{1:<40}".format("    ssd pecycle /dev/xxx     ",	"show SSD P/E cycle"))
